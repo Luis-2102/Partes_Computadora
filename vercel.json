@@ -1,7 +1,6 @@
 {
   "name": "partes-computadora",
   "version": 2,
-  "public": true,
   "builds": [
     {
       "src": "index.html",
