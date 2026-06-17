@@ -1,0 +1,444 @@
+/* =============================================
+   BASE
+   ============================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =============================================
+   HEADER
+   ============================================= */
+header {
+  background: linear-gradient(135deg,#038c0a 0%, #055900 60%, #606303 80%);
+  color: #fff;
+  padding: 2rem 1.5rem;
+  font-family: 'Segoe UI', system-ui, Arial, sans-serif;
+}
+
+.header-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.header-icon {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  line-height: 1;
+}
+
+header h1 {
+  font-size: clamp(1.5rem, 4vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.subtitle {
+  margin-top: 0.3rem;
+  font-size: 1rem;
+  opacity: 0.88;
+}
+
+/* =============================================
+   TABS NAV
+   ============================================= */
+.tabs {
+  display: flex;
+  gap: 0;
+  background: #055900;
+  padding: 0 1.5rem;
+  overflow-x: auto;
+  
+}
+
+.tab {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.72);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.85rem 1.4rem;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+
+.tab:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.08);
+}
+
+.tab.active {
+  color: #fff;
+  border-bottom-color: #f59e0b;
+}
+
+/* =============================================
+   CUERPO PRINCIPAL
+   ============================================= */
+main {
+  flex: 1;
+  max-width: 960px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1.25rem;
+  font-family: 'Segoe UI', system-ui, Arial, sans-serif;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+  animation: fadeIn 0.35s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.section-title {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #038c0a;
+  margin-bottom: 0.4rem;
+}
+
+.section-desc {
+  color:#64748b;
+  margin-bottom: 1.75rem;
+  font-size: 0.97rem;
+}
+
+/* =============================================
+   TARJETAS 
+   ============================================= */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.1rem;
+}
+
+.card {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 1.4rem 1.1rem 1.2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  box-shadow:  0 2px 12px rgba(0,0,0,0.10);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #038c0a;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.18);
+  border-color: #038c0a;
+}
+
+.card:hover::after {
+  opacity: 0.04;
+}
+
+.card:focus-visible {
+  outline: 3px solid #038c0a;
+  outline-offset: 2px;
+}
+
+.card-icon {
+  font-size: 2.8rem;
+  margin-bottom: 0.6rem;
+  line-height: 1;
+}
+
+.card-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.25rem;
+  font-family: 'Segoe UI', system-ui, Arial, sans-serif;
+}
+
+.card-short {
+  font-size: 0.82rem;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+.card-badge {
+  display: inline-block;
+  margin-top: 0.7rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.badge-interna {
+  background: #dbeafe;
+  color: #038c0a;
+}
+
+.badge-externa {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+/* =============================================
+   TARJETAS INDIVIDUALES 
+   ============================================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15,25,45,0.62);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease;
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+.modal {
+  background: #ffffff;
+  border-radius: 18px;
+  max-width: 480px;
+  width: 100%;
+  padding: 2.2rem 2rem 2rem;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.22);
+  animation: slideUp 0.28s ease;
+  font-family: 'Segoe UI', system-ui, Arial, sans-serif;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.1rem;
+  background: #e8edf4;
+  border: none;
+  font-size: 1.3rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  transition: background 0.15s, color 0.15s;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  background: #dc2626;
+  color: #fff;
+}
+
+.modal-icon {
+  font-size: 3.8rem;
+  text-align: center;
+  margin-bottom: 0.8rem;
+}
+
+.modal h3 {
+  font-size: 1.35rem;
+  color: #038c0a;
+  margin-bottom: 0.7rem;
+  text-align: center;
+}
+
+.modal p {
+  color: #1e293b;
+  font-size: 0.96rem;
+  line-height: 1.65;
+  text-align: center;
+}
+
+.modal-fun {
+  margin-top: 1.1rem;
+  background: #fef9c3;
+  border-left: 4px solid #f59e0b;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  font-size: 0.88rem;
+  color: #78350f;
+  text-align: left;
+}
+
+/* =============================================
+   QUIZ
+   ============================================= */
+#quiz-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.quiz-question {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 1.3rem 1.2rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+}
+
+.quiz-question p {
+  font-weight: 700;
+  margin-bottom: 0.9rem;
+  font-size: 1rem;
+  color: #1e293b;
+}
+
+.quiz-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem;
+}
+
+.quiz-option {
+  background: #e8edf4;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+  text-align: left;
+  color: #1e293b;
+}
+
+.quiz-option:hover {
+  background: #dbeafe;
+  border-color: #038c0a;
+  transform: scale(1.02);
+}
+
+.quiz-option.selected {
+  background: #bfdbfe;
+  border-color: #038c0a;
+  font-weight: 600;
+}
+
+.quiz-option.correct {
+  background: #bbf7d0;
+  border-color: #16a34a;
+  color: #14532d;
+}
+
+.quiz-option.wrong {
+  background: #fecaca;
+  border-color: #dc2626;
+  color: #7f1d1d;
+}
+
+.quiz-option:disabled {
+  cursor: default;
+}
+
+.quiz-result {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.4rem 1.5rem;
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 1.1rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+}
+
+.quiz-result.hidden { display: none; }
+
+.result-great { border-left: 5px solid #16a34a; color: #14532d; background: #f0fdf4; }
+.result-ok    { border-left: 5px solid #f59e0b;  color: #78350f; background: #fffbeb; }
+.result-low   { border-left: 5px solid #dc2626;   color: #7f1d1d; background: #fef2f2; }
+
+.btn-primary, .btn-secondary {
+  padding: 0.7rem 1.8rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s, transform 0.12s;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.btn-primary {
+  background: #038c0a;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #055900;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: #e8edf4;
+  color: #1e293b;
+  border: 1.5px solid #cbd5e1;
+}
+
+.btn-secondary:hover {
+  background: #cbd5e1;
+}
+
+.btn-primary.hidden,
+.btn-secondary.hidden {
+  display: none;
+}
+
+/* =============================================
+   PIE
+   ============================================= */
+footer {
+  background: #055900;
+  color: rgba(255,255,255,0.65);
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.83rem;
+  margin-top: auto;
+  font-family: 'Segoe UI', system-ui, Arial, sans-serif;
+}
+

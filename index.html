@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Partes de una Computadora</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <!-- CABECERA -->
+    <header>
+      <div class="header-inner">
+        <img src="Imagen1.png" alt="Partes de computadora" class="header-icon">
+        <div>
+          <h1>Partes de una Computadora</h1>
+          <p class="subtitle">Aprende de forma interactiva sobre los componentes internos y externos</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- NAV -->
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-tab="internas" role="tab">&#9881; Partes Internas</button>
+      <button class="tab" data-tab="externas" role="tab">&#128421; Partes Externas</button>
+      <button class="tab" data-tab="quiz" role="tab">&#10067; Quiz</button>
+    </nav>
+
+    <!-- MENU -->
+    <main>
+
+      <!-- PARTES INTERNAS -->
+      <section id="tab-internas" class="tab-content active">
+        <h2 class="section-title">Partes Internas de la Computadora</h2>
+        <p class="section-desc">Estos son los componentes que se encuentran dentro del gabinete o torre. Son el "cerebro y corazon" del equipo.</p>
+        <div class="cards-grid" id="cards-internas"></div>
+      </section>
+
+      <!-- PARTES EXTERNAS -->
+      <section id="tab-externas" class="tab-content">
+        <h2 class="section-title">Partes Externas de la Computadora</h2>
+        <p class="section-desc">Estos son los dispositivos que se conectan o rodean al equipo. Nos permiten interactuar con la computadora.</p>
+        <div class="cards-grid" id="cards-externas"></div>
+      </section>
+
+      <!-- TEST -->
+      <section id="tab-quiz" class="tab-content">
+        <h2 class="section-title">Pon a prueba tu conocimiento</h2>
+        <p class="section-desc">Responde las siguientes preguntas sobre las partes de la computadora.</p>
+        <div id="quiz-container"></div>
+        <div id="quiz-result" class="quiz-result hidden"></div>
+        <button id="btn-quiz" class="btn-primary">Enviar respuestas</button>
+        <button id="btn-reset" class="btn-secondary hidden">Intentar de nuevo</button>
+      </section>
+
+    </main>
+
+    <!-- TARJETAS -->
+    <div id="modal-overlay" class="modal-overlay hidden" role="dialog" aria-modal="true">
+      <div class="modal">
+        <button class="modal-close" id="modal-close" aria-label="Cerrar">&times;</button>
+        <div class="modal-icon" id="modal-icon"></div>
+        <h3 id="modal-title"></h3>
+        <p id="modal-desc"></p>
+        <div class="modal-fun" id="modal-fun"></div>
+      </div>
+    </div>
+
+    <footer>
+      <p>Pagina Web &bull; Componentes de computadora &bull; SEBASTIAN ALOMOTO</p>
+    </footer>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
